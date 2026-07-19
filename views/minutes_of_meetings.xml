@@ -1,0 +1,53 @@
+<odoo>
+
+
+    <record id="view_calendar_meetings_inherit" model="ir.ui.view">
+        <field name="name">calendar.meetings.inherit</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <!-- Left side: Action Buttons -->
+                    <div>
+                        <button name="action_confirm" string="Confirm" type="object" class="btn btn-primary"
+                                invisible="state != 'draft'"/>
+
+                        <button name="action_done" string="Mark Done" type="object" class="btn btn-secondary"
+                                invisible="state != 'confirm'"/>
+
+                        <button name="action_cancel" string="Cancel" type="object" class="btn btn-danger"
+                                invisible="state in ['cancel', 'done']"/>
+
+                        <button name="action_reset_to_draft" string="Reset to Draft" type="object"
+                                class="btn btn-secondary"
+                                invisible="state != 'cancel'"/>
+                    </div>
+
+                    <!-- Right side: Statusbar -->
+                    <div>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='d-flex align-items-baseline' and @colspan='2']" position="after">
+                <div>
+                    <h4>Session Details</h4>
+                    <group col="1">
+                        <field name="appointment_id"/>
+                        <field name="booking_date" invisible="1"/>
+                        <field name="fess_fees"/>
+                        <field name="time_slot_ids" widget="many2many_tags" invisible="1"/>
+                        <field name="company_id"/>
+                        <field name="email"/>
+                        <field name="mobile_number"/>
+                    </group>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_meetings" name="Appointment" parent="menu_appointment_root" action="calendar.action_calendar_event"
+              sequence="2"/>
+</odoo>

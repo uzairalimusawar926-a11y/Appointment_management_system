@@ -1,0 +1,26 @@
+
+6 August 2025 - DTH
+------------------------
+v 18.0.1.2
+
+    - Delete templates.xml file
+          This file has only commented code. So, it can be deleted.
+    
+    - Delete week_day_data.xml file
+          This file is not used anywhere and is also not added in the __manifest__.py file. So, it can be deleted.
+
+     - In the calendar.event model, make the service field visible.
+           But do not allow the service to be passed or selected from the portal side.
+
+     - In the calendar.event model, the mobile field is currently set as Integer type.
+            Please change it to Char type.
+     - Visible appointment_id field in calendar.event model.
+     - When appointment create then not pass appointment_id from portal side.
+     
+     
+8 August 2025 - BPT
+---------------------------
+v 18.0.1.2
+	
+	- Dashboard created.
+	- Index created

@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_appointment_root" name="Appointment" sequence="10"/>
+</odoo>
